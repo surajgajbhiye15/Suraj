@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Project Evaluation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0070f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005ad1;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Project Evaluation Form</h1>
+
+<div class="card">
+    <label>Team Name</label>
+    <select id="teamName">
+        <option value="">Select Team</option>
+        <option>Team Alpha</option>
+        <option>Team Beta</option>
+        <option>Team Gamma</option>
+    </select>
+
+    <label>Innovation (out of 10)</label>
+    <input type="number" id="innovation" min="0" max="10">
+
+    <label>Design Quality (out of 10)</label>
+    <input type="number" id="design" min="0" max="10">
+
+    <label>Feasibility (out of 10)</label>
+    <input type="number" id="feasibility" min="0" max="10">
+
+    <label>Presentation (out of 10)</label>
+    <input type="number" id="presentation" min="0" max="10">
+
+    <button onclick="calculateScore()">Submit Evaluation</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateScore() {
+    let innovation = parseFloat(document.getElementById('innovation').value) || 0;
+    let design = parseFloat(document.getElementById('design').value) || 0;
+    let feasibility = parseFloat(document.getElementById('feasibility').value) || 0;
+    let presentation = parseFloat(document.getElementById('presentation').value) || 0;
+
+    let total = innovation + design + feasibility + presentation;
+    let average = (total / 4).toFixed(2);
+
+    let team = document.getElementById('teamName').value;
+
+    if (!team) {
+        alert("Please select a team name.");
+        return;
+    }
+
+    let resultText = `Team: ${team} | Total Score: ${total}/40 | Average: ${average}`;
+    document.getElementById('result').innerText = resultText;
+
+    // Store locally (temporary)
+    let evaluations = JSON.parse(localStorage.getItem("evaluations") || "[]");
+    evaluations.push({ team, innovation, design, feasibility, presentation, total, average });
+    localStorage.setItem("evaluations", JSON.stringify(evaluations));
+}
+</script>
+
+</body>
+</html>
