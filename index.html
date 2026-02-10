@@ -1,115 +1,229 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AAKRUTI INNOVATION COMPETITION</title>
-
+    <title>AAKRUTI Innovation Competition Evaluations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            padding: 20px;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
         }
-        h1 {
-            text-align: center;
-        }
-        .card {
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            max-width: 500px;
-            margin: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        h1 { color: #1a2b6d; }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
         }
         label {
+            display: block;
+            margin-top: 15px;
             font-weight: bold;
         }
-        input, select {
+        input, select, textarea {
             width: 100%;
             padding: 8px;
-            margin: 8px 0 15px 0;
+            margin-top: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+        textarea { resize: vertical; }
+        .score-input { width: 120px; }
+        .row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .row .col {
+            flex: 1;
+            min-width: 250px;
+        }
+        .total-box {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a2b6d;
+        }
         button {
-            width: 100%;
-            padding: 10px;
-            background: #0070f3;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #1a2b6d;
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
         }
-        button:hover {
-            background: #0066cc;
-        }
-        .result {
-            margin-top: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
+        button:hover { background-color: #0f1a4d; }
     </style>
 </head>
 
 <body>
 
-<h1>AAKRUTI IDC EVALUATION</h1>
+<div class="container">
+    <div class="header">
+        <!-- Replace with official AAKRUTI logo URL -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYnO2gh1yRdi-y27D4dFQN78iwKRJiQisnpg&s" alt="AAKRUTI Logo">
+        <h1>AAKRUTI Innovation Competition Evaluations</h1>
+    </div>
 
-<div class="card">
-    <label>Theme</label>
-    <select id="theme">
-        <option value="">Select Theme</option>
-        <option>Theme A</option>
-        <option>Theme B</option>
-        <option>Theme C</option>
-    </select>
+    <form id="evaluationForm">
 
-    <label>Innovation (out of 10)</label>
-    <input type="number" id="innovation" min="0" max="10">
+        <h2>Team Details</h2>
+        <label>Theme</label>
+        <select id="theme" required>
+            <option value="">Select Theme</option>
+            <option>Healthcare</option>
+            <option>Smart Cities</option>
+            <option>Sustainability</option>
+            <option>Mobility</option>
+            <option>Education</option>
+            <option>Open Innovation</option>
+        </select>
 
-    <label>Design Quality (out of 10)</label>
-    <input type="number" id="design" min="0" max="10">
+        <label>Country</label>
+        <select id="country" required>
+            <option value="">Select Country</option>
+            <option>India</option>
+            <option>USA</option>
+            <option>Germany</option>
+            <option>France</option>
+            <option>Japan</option>
+            <option>Other</option>
+        </select>
 
-    <label>Feasibility (out of 10)</label>
-    <input type="number" id="feasibility" min="0" max="10">
+        <label>Team ID</label>
+        <input type="text" id="teamId" required>
 
-    <label>Presentation (out of 10)</label>
-    <input type="number" id="presentation" min="0" max="10">
+        <label>Team Name</label>
+        <input type="text" id="teamName" required>
 
-    <button onclick="calculateScore()">Submit Evaluation</button>
+        <label>Team Leader Email ID</label>
+        <input type="email" id="leaderEmail" required>
 
-    <div class="result" id="result"></div>
+        <label>Submission URL</label>
+        <input type="url" id="submissionUrl" placeholder="https://..." required>
+
+        <h2>Evaluation Scores (0–5)</h2>
+        <div class="row">
+            <div class="col">
+                <label>Theme Adherence</label>
+                <input type="number" class="score score-input" min="0" max="5" required>
+            </div>
+            <div class="col">
+                <label>Problem Statement</label>
+                <input type="number" class="score score-input" min="0" max="5" required>
+            </div>
+            <div class="col">
+                <label>Idea Proposed</label>
+                <input type="number" class="score score-input" min="0" max="5" required>
+            </div>
+            <div class="col">
+                <label>CAD Model</label>
+                <input type="number" class="score score-input" min="0" max="5" required>
+            </div>
+            <div class="col">
+                <label>Calculation</label>
+                <input type="number" class="score score-input" min="0" max="5" required>
+            </div>
+        </div>
+
+        <div class="total-box">
+            Total Score: <span id="totalScore">0</span> / 25
+        </div>
+
+        <div class="total-box">
+            Team Average Score: <span id="averageScore">Not available yet</span>
+        </div>
+
+        <h2>Evaluator Comments</h2>
+        <textarea id="comments" rows="4" placeholder="Write strengths and improvements..."></textarea>
+
+        <h2>Evaluator Details</h2>
+        <label>Evaluator Name</label>
+        <input type="text" id="evaluatorName" required>
+
+        <label>Evaluator Trigram</label>
+        <input type="text" id="evaluatorTrigram" maxlength="3" required>
+
+        <button type="submit">Submit Evaluation</button>
+    </form>
 </div>
 
 <script>
-function calculateScore() {
-    let innovation = parseFloat(document.getElementById('innovation').value) || 0;
-    let design = parseFloat(document.getElementById('design').value) || 0;
-    let feasibility = parseFloat(document.getElementById('feasibility').value) || 0;
-    let presentation = parseFloat(document.getElementById('presentation').value) || 0;
+// 🔢 AUTO TOTAL CALCULATION
+const scoreInputs = document.querySelectorAll('.score');
+const totalScoreDisplay = document.getElementById('totalScore');
 
-    let total = innovation + design + feasibility + presentation;
-    let average = (total / 4).toFixed(2);
-
-    let team = document.getElementById('teamName').value;
-
-    if (!team) {
-        alert("Please select a team name.");
-        return;
-    }
-
-    let resultText = `Team: ${team} | Total Score: ${total}/40 | Average: ${average}`;
-    document.getElementById('result').innerText = resultText;
-
-    // Store locally (temporary)
-    let evaluations = JSON.parse(localStorage.getItem("evaluations") || "[]");
-    evaluations.push({ team, innovation, design, feasibility, presentation, total, average });
-    localStorage.setItem("evaluations", JSON.stringify(evaluations));
+function calculateTotal() {
+    let total = 0;
+    scoreInputs.forEach(input => total += Number(input.value) || 0);
+    totalScoreDisplay.textContent = total;
 }
+
+scoreInputs.forEach(input => input.addEventListener('input', calculateTotal));
+
+// 🌍 GOOGLE SHEETS CONNECTION
+const scriptURL = https://script.google.com/macros/s/AKfycbxwALt_8BXqvYa63-MjbzuhyPCbTrzxBMqIuNFxikA8Kk4Sov95S-ec7iqTxtevVVPDrQ/exec;
+
+document.getElementById("evaluationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let total = 0;
+    scoreInputs.forEach(s => total += Number(s.value) || 0);
+
+    const formData = {
+        theme: document.getElementById("theme").value,
+        country: document.getElementById("country").value,
+        teamId: document.getElementById("teamId").value,
+        teamName: document.getElementById("teamName").value,
+        leaderEmail: document.getElementById("leaderEmail").value,
+        submissionUrl: document.getElementById("submissionUrl").value,
+        themeAdherence: scoreInputs[0].value,
+        problemStatement: scoreInputs[1].value,
+        ideaProposed: scoreInputs[2].value,
+        cadModel: scoreInputs[3].value,
+        calculation: scoreInputs[4].value,
+        totalScore: total,
+        comments: document.getElementById("comments").value,
+        evaluatorName: document.getElementById("evaluatorName").value,
+        evaluatorTrigram: document.getElementById("evaluatorTrigram").value
+    };
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Evaluation Submitted Successfully!");
+        document.getElementById("averageScore").textContent = data.averageScore + " / 25";
+        document.getElementById("evaluationForm").reset();
+        document.getElementById("totalScore").textContent = "0";
+    })
+    .catch(error => alert("Error submitting form"));
+});
 </script>
 
 </body>
 </html>
-
-
