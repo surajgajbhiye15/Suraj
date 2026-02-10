@@ -1,197 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>AAKRUTI Innovation Competition Evaluations</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1a2b6d, #3b4cca);
-    margin: 0;
-    padding: 20px;
-}
-.container {
-    max-width: 950px;
-    margin: auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.header {
-    text-align: center;
-}
-.header img { height: 70px; }
-h1 { color: #1a2b6d; margin-bottom: 10px; }
-
-h2 {
-    margin-top: 30px;
-    color: #333;
-    border-left: 5px solid #3b4cca;
-    padding-left: 10px;
-}
-
-label { font-weight: 600; margin-top: 12px; display:block; }
-
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-.score-card {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.score-box {
-    background: #f0f3ff;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.score-box input {
-    width: 70px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.total-display {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #1a2b6d;
-}
-
-button {
-    margin-top: 30px;
-    width: 100%;
-    padding: 14px;
-    background: #1a2b6d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-button:hover { background:#0f1a4d; }
+body {font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#1a2b6d,#3b4cca);margin:0;padding:20px;}
+.container{max-width:950px;margin:auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+.header{text-align:center;}
+.header img{height:70px;}
+h1{color:#1a2b6d;margin-bottom:10px;}
+h2{margin-top:30px;color:#333;border-left:5px solid #3b4cca;padding-left:10px;}
+label{font-weight:600;margin-top:12px;display:block;}
+input,select,textarea{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:1px solid #ccc;font-size:14px;}
+.score-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px;}
+.score-box{background:#f0f3ff;padding:15px;border-radius:8px;text-align:center;}
+.score-box input{width:70px;text-align:center;font-size:18px;font-weight:bold;}
+.total-display{margin-top:20px;font-size:20px;font-weight:bold;color:#1a2b6d;}
+button{margin-top:30px;width:100%;padding:14px;background:#1a2b6d;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;}
+button:hover{background:#0f1a4d;}
+#successMsg{display:none;margin-top:15px;padding:10px;background:#d4edda;color:#155724;border-radius:6px;}
 </style>
 </head>
 
 <body>
-
 <div class="container">
 <div class="header">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYnO2gh1yRdi-y27D4dFQN78iwKRJiQisnpg&s">
-    <h1>AAKRUTI Innovation Competition Evaluations</h1>
+<img src="https://yt3.googleusercontent.com/AcbsFxAR6uiDB8NeE5mMwHo7c1iZvfW3N3bQM_bu5Y2DZbS44WbxnRQAYARvgLnA5ZJbuneJYw=s900-c-k-c0x00ffffff-no-rj">
+<h1>AAKRUTI Innovation Competition Evaluations</h1>
 </div>
 
 <form id="evaluationForm">
 
 <h2>Team Details</h2>
 <label>Theme</label>
-<select id="theme" required>
+<select name="theme" required>
 <option value="">Select Theme</option>
-<option>Healthcare</option>
-<option>Smart Cities</option>
-<option>Sustainability</option>
-<option>Mobility</option>
-<option>Education</option>
-<option>Open Innovation</option>
+<option>Healthcare</option><option>Smart Cities</option><option>Sustainability</option>
+<option>Mobility</option><option>Education</option><option>Open Innovation</option>
 </select>
 
 <label>Country</label>
-<select id="country" required>
+<select name="country" required>
 <option value="">Select Country</option>
 <option>India</option><option>USA</option><option>Germany</option>
 <option>France</option><option>Japan</option><option>Other</option>
 </select>
 
-<label>Team ID</label><input type="text" id="teamId" required>
-<label>Team Name</label><input type="text" id="teamName" required>
-<label>Team Leader Email</label><input type="email" id="leaderEmail" required>
-<label>Submission URL</label><input type="url" id="submissionUrl" required>
+<label>Team ID</label><input type="text" name="teamId" required>
+<label>Team Name</label><input type="text" name="teamName" required>
+<label>Team Leader Email</label><input type="email" name="leaderEmail" required>
+<label>Submission URL</label><input type="url" name="submissionUrl" required>
 
 <h2>Evaluation Scores (0–5)</h2>
 <div class="score-card">
-  <div class="score-box">Theme<br><input type="number" class="score" min="0" max="5"></div>
-  <div class="score-box">Problem<br><input type="number" class="score" min="0" max="5"></div>
-  <div class="score-box">Idea<br><input type="number" class="score" min="0" max="5"></div>
-  <div class="score-box">CAD<br><input type="number" class="score" min="0" max="5"></div>
-  <div class="score-box">Calculation<br><input type="number" class="score" min="0" max="5"></div>
+<div class="score-box">Theme<br><input type="number" name="themeAdherence" class="score" min="0" max="5" required></div>
+<div class="score-box">Problem<br><input type="number" name="problemStatement" class="score" min="0" max="5" required></div>
+<div class="score-box">Idea<br><input type="number" name="ideaProposed" class="score" min="0" max="5" required></div>
+<div class="score-box">CAD<br><input type="number" name="cadModel" class="score" min="0" max="5" required></div>
+<div class="score-box">Calculation<br><input type="number" name="calculation" class="score" min="0" max="5" required></div>
 </div>
 
 <div class="total-display">Total Score: <span id="totalScore">0</span> / 25</div>
 <div class="total-display">Team Average Score: <span id="averageScore">—</span></div>
 
 <h2>Evaluator Comments</h2>
-<textarea id="comments" rows="3"></textarea>
+<textarea name="comments" rows="3"></textarea>
 
 <h2>Evaluator Details</h2>
-<label>Evaluator Name</label><input type="text" id="evaluatorName" required>
-<label>Evaluator Trigram</label><input type="text" id="evaluatorTrigram" maxlength="3" required>
+<label>Evaluator Name</label><input type="text" name="evaluatorName" required>
+<label>Evaluator Trigram</label><input type="text" name="evaluatorTrigram" maxlength="3" required>
 
 <button type="submit">Submit Evaluation</button>
+<div id="successMsg">✅ Evaluation submitted successfully!</div>
 </form>
 </div>
 
 <script>
-const scriptURL = https://script.google.com/macros/s/AKfycbxHGp48VYHwphIi0-5WdxyHX50GbJCR-CVVyD1813BduOcU43cN3SZ23xCUl1zE9lBxow/exec;
+const scriptURL = "https://script.google.com/macros/s/AKfycbytNXrEeK9YF-b-wvDswGTpYBqqy8BE7IeLdv3qzOJUYdG_nYCD7QiDok808rBJXqH6wg/exec";
 const scores = document.querySelectorAll(".score");
 const totalDisplay = document.getElementById("totalScore");
 const avgDisplay = document.getElementById("averageScore");
+const successMsg = document.getElementById("successMsg");
 
 function updateTotal(){
-  let total=0;
-  scores.forEach(s=> total += Number(s.value)||0);
+  let total = 0;
+  scores.forEach(s => total += Number(s.value) || 0);
   totalDisplay.textContent = total;
 }
-scores.forEach(s=> s.addEventListener("input", updateTotal));
+scores.forEach(s => s.addEventListener("input", updateTotal));
 
-document.getElementById("evaluationForm").addEventListener("submit", e=>{
+document.getElementById("evaluationForm").addEventListener("submit", function(e){
   e.preventDefault();
   updateTotal();
+  successMsg.style.display="none";
 
-  const total = Number(totalDisplay.textContent);
+  const formData = new FormData(this);
+  formData.append("totalScore", totalDisplay.textContent);
 
-  const data = {
-    theme: theme.value,
-    country: country.value,
-    teamId: teamId.value,
-    teamName: teamName.value,
-    leaderEmail: leaderEmail.value,
-    submissionUrl: submissionUrl.value,
-    themeAdherence: scores[0].value,
-    problemStatement: scores[1].value,
-    ideaProposed: scores[2].value,
-    cadModel: scores[3].value,
-    calculation: scores[4].value,
-    totalScore: total,
-    comments: comments.value,
-    evaluatorName: evaluatorName.value,
-    evaluatorTrigram: evaluatorTrigram.value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {"Content-Type":"application/json"}
-  })
-  .then(res => res.json())
-  .then(res => {
-      avgDisplay.textContent = res.averageScore + " / 25";
-      alert("Evaluation submitted successfully!");
-      evaluationForm.reset();
+  fetch(scriptURL, { method: "POST", body: formData })
+  .then(res => res.text())
+  .then(avg => {
+      avgDisplay.textContent = avg + " / 25";
+      successMsg.style.display="block";
+      this.reset();
       totalDisplay.textContent = "0";
   })
   .catch(err => alert("Submission failed. Check Apps Script deployment."));
